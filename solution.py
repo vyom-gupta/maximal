@@ -1,7 +1,7 @@
 from collections import defaultdict, Counter
  
  
-def SmallestSubString(S):
+def SmallestSub(S):
     p = ''.join(set(S))
     dict_t = Counter(p)
  
@@ -51,5 +51,5 @@ def SmallestSubString(S):
  
 S = input()
  
-out_ = SmallestSubString(S)
+out_ = SmallestSub(S)
 print (out_)
