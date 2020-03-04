@@ -10,46 +10,46 @@ def SmallestSub(S):
     l = 0
     r = 0
  
-    curr_window_uniq_chars_count = 0
+    uniq_chars_count = 0
  
-    curr_window_uniq_dict = {}
+    uniq_dict = {}
   
     min_window_len = float("inf")
-    desired_window_l = None
-    desired_window_r = None
+    window_l = None
+    window_r = None
  
     while r < len(S):
  
         
-        curr_window_uniq_dict[S[r]] = curr_window_uniq_dict.get(S[r], 0) + 1
+        uniq_dict[S[r]] = uniq_dict.get(S[r], 0) + 1
  
 
-        if S[r] in dict_t and curr_window_uniq_dict[S[r]] == dict_t[S[r]]:
-            curr_window_uniq_chars_count += 1
+        if S[r] in dict_t and uniq_dict[S[r]] == dict_t[S[r]]:
+            uniq_chars_count += 1
  
         
-        while l <= r and curr_window_uniq_chars_count == required:
+        while l <= r and uniq_chars_count == required:
  
             
             if r - l + 1 < min_window_len:
                 min_window_len = r - l + 1
-                desired_window_l = l
-                desired_window_r = r
+                window_l = l
+                window_r = r
  
             
-            curr_window_uniq_dict[S[l]] -= 1
-            if S[l] in dict_t and curr_window_uniq_dict[S[l]] < dict_t[S[l]]:
-                curr_window_uniq_chars_count -= 1
+            uniq_dict[S[l]] -= 1
+            if S[l] in dict_t and uniq_dict[S[l]] < dict_t[S[l]]:
+                uniq_chars_count -= 1
  
             
             l += 1
  
         
         r += 1
-    return "" if min_window_len == float("inf") else len(S[desired_window_l: desired_window_r + 1])
+    return "" if min_window_len == float("inf") else len(S[window_l: window_r + 1])
  
  
 S = input()
  
-out_ = SmallestSub(S)
-print (out_)
+result = SmallestSub(S)
+print (result)
